@@ -7,7 +7,7 @@
 #
 
 # Take a DNA sequence, return a list of substrings
-def HaeIII(dna)
+def HaeIII(dna):
 	lst = []
 	str1 = 'GGCC'
 	start = 0
