@@ -11,9 +11,9 @@ def HaeIII(dna):
 	lst = []
 	str1 = 'GGCC'
 	start = 0
-	while start != len(dna) - 1:
-		end = dna.find(str1, start) + 2
-		if end > len(dna):
+	while start <= (len(dna) - 1):
+		end = (dna.find(str1, start)) + 2
+		if end >= len(dna):
 			end = len(dna) - 1
 		lst.append(dna[start:end])
 		start = end
@@ -27,5 +27,5 @@ intab = 'ACGT'
 outtab = 'TGCA'
 trantab = str.maketrans(intab, outtab)
 for i in subseqs:
-	print(subseqs[i], '\n')
-	print(subseqs[i].translate(trantab), "\n\n")
+	print(i)
+	print(i.translate(trantab), "\n")
