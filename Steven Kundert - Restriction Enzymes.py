@@ -20,20 +20,20 @@
 # Take a DNA sequence, return a list of substrings. This should be 
 #  O(n) complexity because of the str.find() calls.
 def HaeIII(dna):
-    lst = []        # Create a list to put substrings into
-    str1 = 'GGCC'   # We will be looking for this subsequence
-    start = 0       # Start at the beginning of the string
+    lst = []        	# Create a list to put substrings into
+    start = 0       	# Start at the beginning of the string
+	endofseq = len(dna)	# Make a value for the end of the line
     
     # While the search hasn't reached the end of the sequence 
-    while start < len(dna):
+    while start < endofseq:
         # Put a splitting point between 'GG' and 'CC'
 		# The str.find() call returns -1 if it reaches the end
 		#  of the string, so we will get end == 1 then 
-        end = dna.find(str1, start) + 2
+        end = dna.find('GGCC', start) + 2
         # If the end of the string has been reached,
         #  put the endpoint at the end of the sequence.
         if end == 1:
-            end = len(dna)
+            end = endofseq
             
         # Append a substring from the sequence into the list
         lst.append(dna[start:end])
@@ -42,7 +42,6 @@ def HaeIII(dna):
         start = end
        
     return lst
-		
 		
 # Create a sequence to be cut up
 sequence = 'ACGAACATCTTTGGCCAACTAGACCTGGCCAACCTAGCGG'	
