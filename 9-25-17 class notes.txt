@@ -1,0 +1,63 @@
+DNA = 'ACGAACTG....ACCTGGGAA' #Long string
+PAT = 'ACCTG' #want to find this pattern in the string
+
+Naive algorithm
+
+DNA[i:i+len(PAT)]
+
+for (in in Range(0, len(DNA) - len(PAT)]:
+	if (DNA[i:i+len(PAT)] == PAT):
+		print(i)
+		
+		
+S = 'CGTGGA'
+T = 'CGTAGT'
+def com(S,T):
+	for(i in len(S)):
+		if(S[i]!=T[i]) return False
+	return True	
+
+#Naive Algorithm - practice / memorize for test!
+# O(len(DNA) * len(PAT))
+for (in in Range(0, len(DNA) - len(PAT)]:
+	if comp(DNA[i:i+len(PAT)], PAT):
+		prin(i) #pos of match
+		
+		
+Hashing -
+keys = {#, string, etc}
+Hash(key)
+let's hash 'AGCT' and 'ACGT'
+A = 0, G = 1, C = 2, T = 3
+Get 0123, 0213 base 4
+
+Have hash table, index 0 to N-1. Then mod hashes by a prime N, i.e. 0123 % N
+if two hit a spot, could create a linked list
+		
+Unordered map in C++ implemented as a hash scheme
+		
+#1 = Hash(PAT)
+looking at DNA,
+#2 = Hash(i:i+len(PAT))
+
+if #1 == #2:
+	#the two strings MIGHT be equal
+	then check the slow way
+	
+Hashing is still O(len(PAT)*len(DNA))
+
+t = Hash(DNA[0:len(PAT)])
+to get hash of CTGAA from hash of ACTGA, mult by 4, add next char (append)
+then mod by char * 4 ^ (len(PAT) - 1)	
+
+if we have def append(c) and chop(c)
+
+h0 = Hash(PAT)
+h1 = Hash(DNA[0:len(PAT)])
+for (i in Range(0:len(DNA)-len(PAT):		
+	if(h0 == h1):
+		if (DNA[i:i+len(PAT)] == PAT):		#O(len(pat))
+			print("match at", i)
+		else:	
+			h1.append(DNA[i+len(PAT)])		#O(1)
+			h1.chop(DNA[i])					#O(1)
