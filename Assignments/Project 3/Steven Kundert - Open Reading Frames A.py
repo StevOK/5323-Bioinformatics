@@ -54,8 +54,8 @@ for frame in range(3):
         # Otherwise look for stop codons
         elif(dna[i+frame:i+frame+3] in stopcodons):
             numstops = numstops + 1             # Increment when a stop codon is found
-            if((i+frame - laststop) > 600):     # If the distance between the current and previous
-                                                #  stop codons is 600 or more
+            # If the distance between the current and previous stop codons is 600 or more
+            if(((i+frame - laststop) > 600) and laststop > 0):     
                 largestops = largestops + 1     # Increment number of large stop blocks found
             laststop = i+frame                  # Then update the location of the most recent stop
     # Print specified information for each frame
