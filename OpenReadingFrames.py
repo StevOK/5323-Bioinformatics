@@ -1,41 +1,79 @@
 # Steven Kundert
+# CMPS 5323 - Bioinformatics - Simpson
+# Project 3 part A - Open Reading Frames
+# This program reads a complete DNA sequence from a FASTA file and stores
+# it as a string. It then does a triple pass on that string and its complement
+# to find all start and stop codons in each frame, as well as the number of
+# large stop blocks of 600 or more characters between stop codons.
 
 
+# Create string to concatenate lines to
+dna = ""
 
-# Save FASTA file
+#Open input file for reading	
+file = open('sequence.fasta', 'r')
 
-# Open Fasta for reading
+#Read the first line, then read the second, discarding the header
+line = file.readline()
+line = file.readline()
 
-# read in fasta file as one long string
+# Concatenate each line of the file to the DNA string
+while line:
+    line = line.replace('\n','')    # Remove all return characters from each line
+    dna = dna + line                # Concatenate each line
+    line = file.readline()          # Read in the next line
+    
+# Reverse the DNA sequence
+reverse = dna[::-1]
 
-# there are many more start codons than stop codons
-# never ignore a stop
-# starts don't gaurantee the actual start of a gene
-# perhaps many starts inside a gene
+# Make a translation table for DNA
+intab = 'ACGT'
+outtab = 'TGCA'
+trantab = str.maketrans(intab, outtab)
 
-# upstream from the real start there may be a promoter 
-# TAATAA box, TATA boxes / motif
+# Translate the reversed sequence into its complement
+complement = reverse.translate(trantab) 
 
-# count starts and stops
-# genes are 'conserved' - very few changes over time
+# Define start and stop codons
+startcodon = 'ATG'
+stopcodons = ['TGA','TAG','TAA']
 
+print('Original DNA Sequence Analysis:')
 
-
-# Traverse sequence
-# ORF_Dict = Dict()
-# Every time you see a start, add it to a list
-# startlist = []
-# startlist.append(pos)
-
-# if stop codon found & startlist is empty
-# orf-dict[stop-pos] = startlist # til find stop?
-# startlist = []
-
-#maybe pair list of starts with position of stop in a dict
-# compare each dict against each gene start and stop in the file
-
-#got to write a program to strip each gene start and stop pos
-# find all genes, get the two numbers
-# some genes have complement() surrounding numbers
-
-#look up pattern matching / reg ex: DTU bioinformatics pattern matching
+# Pass through each frame of the original DNA sequence
+for frame in range(3):
+    numstarts = 0
+    numstops = 0
+    largestops = 0
+    laststop = 0
+    # For each codon in the frame
+    for i in range(0,len(dna),3):
+        # Look for start codons and incrememnt when one is found
+        if(dna[i+frame:i+frame+3]==startcodon):
+            numstarts = numstarts + 1
+        # Otherwise look for stop codons
+        elif(dna[i+frame:i+frame+3] in stopcodons):
+            numstops = numstops + 1             # Increment when a stop codon is found
+            if((i+frame - laststop) > 600):     # If the distance between the current and previous
+                                                #  stop codons is 600 or more
+                largestops = largestops + 1     # Increment number of large stop blocks found
+            laststop = i+frame                  # Then update the location of the most recent stop
+    # Print specified information for each frame
+    print('Frame #:',frame,', startct =',numstarts,', stopct =',numstops,', large stop blocks =',largestops)
+    
+print('\nReversed Complementary DNA Sequence Analysis:')
+# Perform the same triple pass of the orginal DNA sequence's complement
+for frame in range(3):
+    numstarts = 0
+    numstops = 0
+    largestops = 0
+    laststop = 0
+    for i in range(0,len(complement),3):
+        if(complement[i+frame:i+frame+3]==startcodon):
+            numstarts = numstarts + 1
+        elif(complement[i+frame:i+frame+3] in stopcodons):
+            numstops = numstops + 1
+            if((i+frame - laststop) >= 600):
+                largestops = largestops + 1
+            laststop = i+frame
+    print('Frame #:',frame,', startct =',numstarts,', stopct =',numstops,', large stop blocks =',largestops)
