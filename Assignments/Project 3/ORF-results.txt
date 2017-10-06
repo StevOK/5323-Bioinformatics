@@ -1,0 +1,21 @@
+Original DNA Sequence Analysis:
+Frame #: 0 , startct = 3034 , stopct = 14681 , large stop blocks = 55
+Frame #: 1 , startct = 3108 , stopct = 14987 , large stop blocks = 43
+Frame #: 2 , startct = 2878 , stopct = 15466 , large stop blocks = 48
+
+Reversed Complementary DNA Sequence Analysis:
+Frame #: 0 , startct = 2900 , stopct = 15011 , large stop blocks = 38
+Frame #: 1 , startct = 2744 , stopct = 15245 , large stop blocks = 46
+Frame #: 2 , startct = 2921 , stopct = 14430 , large stop blocks = 36
+
+GenBank File Analysis:
+Smallest gene: 111 nucleotides, Longest gene: 5415 nucleotides, Number of genes: 476
+
+Number of Genes Located in Both Files: 120
+Largest Genes Matched:
+From 4811 to 7322 in original strand
+From 96932 to 98903 in original strand
+From 181004 to 182864 in original strand
+From 163590 to 165387 in original strand
+From 83461 to 85093 in complementary strand
+Large Open Reading Frames not Matched to GenBank File: 146
