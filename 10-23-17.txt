@@ -47,3 +47,6 @@ $
 7
 6
 g$
+
+
+In binary search, keep looking for lowest once you match.
