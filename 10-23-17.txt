@@ -1,0 +1,49 @@
+In python,
+Create a string,
+Generate a suffix array
+Sort just numbers in SA[i] with only the string
+Suffix Array(I) slide
+
+Do you save time when you save space?
+
+Suffix Array (I)
+
+It is just sorted suffixes.
+
+E.g. consider S = acacag$
+
+Suffix array is an array of n indices. Thus, it takes O(n log n) bits.
+Suffix
+Position
+SA[i]
+Suffix
+acacag$
+1
+7
+$
+cacag$
+2
+1
+acacag$
+acag$
+3
+=>
+3
+acag$
+cag$
+4
+Sort
+5
+ag$
+ag$
+5
+2
+cacag$
+g$
+6
+4
+cag$
+$
+7
+6
+g$
