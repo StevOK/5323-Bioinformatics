@@ -1,0 +1,30 @@
+"""
+Steven Kundert
+Results for Biopython Homework
+"""
+
+ID: L43967.2
+Description: Mycoplasma genitalium G37, complete genome
+Number of Features: 1084
+
+Number of tRNA's: 36
+Number of genes: 525
+Number of CDS features: 476
+
+The following feature is feature 4
+type: variation
+location: [727:728](+)
+qualifiers:
+    Key: compare, Value: ['L43967.1']
+    Key: gene, Value: ['dnaN']
+    Key: locus_tag, Value: ['MG_001']
+    Key: replace, Value: ['gg']
+
+
+The following information is about feature 21
+It is a CDS feature
+Its location is [11250:12039](+)
+It is using the translation table ['4']
+The first 20 characters of its sequence are MEYFDAHCHLNCEPLLSEIE
+And finally the first 50 nucleotides of the entire sequence are
+TAAGTTATTATTTAGTTAATACTTTTAACAATATTATTAAGGTATTTAAA
